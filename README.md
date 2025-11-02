@@ -5,30 +5,30 @@ This code tries to reproduce the original LeNet5 model, presented in Y. Lecun, L
 The goal is to push the LeNet5 architecture to its limits. To do so, two experiments were constructed, using the MNIST dataset. In the first experiment the LeNet's architecture is the same as the original paper and the changes concern only the training process. Namely, Xavier initialization was used and the Adam optimizer with weight decay substituted SGD. Mini-batches of 32 samples were also used. In the second experiment, apart from the changes in the training phase, the model's architecture was updated. The average pooling layers were substituted by max pooling layers. Dropout was also applied after the flatten layer. ReLUs instead of tanh as activation functions and finally, batch normalization was added after the convolutional layers. In both experiments the output layer was kept as an radial basis function (RBF) layer and the loss function was MSE as in the original paper. The training, evaluation, and visualization processes were performed on an AMD Ryzen 9 5900HX CPU and an NVIDIA GeForce RTX 3070 Laptop GPU. 
 
 # Results
-Keeping the original architecture and changing only the training phase did not improve the model's performance, since the results were:
-Number of misclassified examples: 104
-Test Loss: 0.0025, Test Accuracy: 98.96%
-Precision: 0.9896, Recall: 0.9896, F1 Score: 0.9896
+Keeping the original architecture and changing only the training phase did not improve the model's performance, since the results were: <br/>
+Number of misclassified examples: 104 <br/>
+Test Loss: 0.0025, Test Accuracy: 98.96% <br/>
+Precision: 0.9896, Recall: 0.9896, F1 Score: 0.9896 <br/>
 
-Changing the architecture, helped a lot. Substituting tanh with ReLU, average pooling with max poolingm and adding dropout(0.25) before the flatten layer, gave:
-Number of misclassified examples: 91
-Test Loss: 0.0022, Test Accuracy: 99.09%
-Precision: 0.9909, Recall: 0.9909, F1 Score: 0.9909
+Changing the architecture, helped a lot. Substituting tanh with ReLU, average pooling with max poolingm and adding dropout(0.25) before the flatten layer, gave: <br/>
+Number of misclassified examples: 91 <br/>
+Test Loss: 0.0022, Test Accuracy: 99.09% <br/> 
+Precision: 0.9909, Recall: 0.9909, F1 Score: 0.9909 <br/>
 
-Reducing dropout to 0.1, improved further the results:
-Number of misclassified examples: 83
-Test Loss: 0.0020, Test Accuracy: 99.17%
-Precision: 0.9917, Recall: 0.9917, F1 Score: 0.9917
+Reducing dropout to 0.1, improved further the results: <br/>
+Number of misclassified examples: 83 <br/>
+Test Loss: 0.0020, Test Accuracy: 99.17% <br/>
+Precision: 0.9917, Recall: 0.9917, F1 Score: 0.9917 <br/>
 
-Group normalization after the two convolutional layers boosted the model's performance even more:
-Number of misclassified examples: 70
-Test Loss: 0.0018, Test Accuracy: 99.30%
-Precision: 0.9930, Recall: 0.9930, F1 Score: 0.9930
+Group normalization after the two convolutional layers boosted the model's performance even more: <br/>
+Number of misclassified examples: 70 <br/>
+Test Loss: 0.0018, Test Accuracy: 99.30% <br/>
+Precision: 0.9930, Recall: 0.9930, F1 Score: 0.9930 <br/>
 
-However, the change that gave the best performance was the incorporation of batch normalization after the two convolutional layers:
-Number of misclassified examples: 66
-Test Loss: 0.0017, Test Accuracy: 99.34%
-Precision: 0.9934, Recall: 0.9934, F1 Score: 0.9934
+However, the change that gave the best performance was the incorporation of batch normalization after the two convolutional layers: <br/>
+Number of misclassified examples: 66 <br/>
+Test Loss: 0.0017, Test Accuracy: 99.34% <br/>
+Precision: 0.9934, Recall: 0.9934, F1 Score: 0.9934 <br/>
 
 In addition, the updated LeNet5 with batch norm converged in around ~60 epochs, in contrast to the others which needed around ~100 epochs.
 
